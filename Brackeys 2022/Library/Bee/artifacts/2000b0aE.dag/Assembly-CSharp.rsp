@@ -338,7 +338,10 @@
 -r:"Library/Bee/artifacts/2000b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/Characters/PlayerController.cs"
 "Assets/Scripts/Characters/PlayerInput.cs"
+"Assets/Scripts/Characters/PlayerInventory.cs"
+"Assets/Scripts/Items/Weapon.cs"
 "Assets/Scripts/Managers/CameraManager.cs"
+"Assets/Scripts/Managers/UIManager.cs"
 -langversion:9.0
 
 /deterministic

@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
     private static PlayerController _instance;
@@ -30,8 +30,9 @@ public class PlayerController : MonoBehaviour
 
     // ==================================================
     
-    public Rigidbody2D Body { get; private set; }
     public PlayerInput Input { get; private set; }
+    public Rigidbody2D Body { get; private set; }
+    public PlayerInventory Inventory { get; private set; }
 
     public bool IsGrounded { get; private set; }
 
@@ -39,8 +40,9 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        Body = GetComponent<Rigidbody2D>();
         Input = GetComponent<PlayerInput>();
+        Body = GetComponent<Rigidbody2D>();
+        Inventory = GetComponentInChildren<PlayerInventory>();// TODO: spawn in prefab
     }
 
     // ==================================================
@@ -48,6 +50,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         MovePlayer();
+        UpdateWeapons();
     }
 
     private void MovePlayer()
@@ -64,6 +67,28 @@ public class PlayerController : MonoBehaviour
         }
 
         Body.velocity = vel;
+    }
+
+    private void UpdateWeapons()
+    {
+        if (Inventory.equippedWeapon.IsAttacking)
+        {
+            return;
+        }
+
+        if (Input.WeaponPrimaryAction)
+        {
+            Inventory.equippedWeapon.Attack();
+        }
+
+        if (Input.WeaponScrollInput == 1)
+        {
+            Inventory.NextWeapon();
+        }
+        else if (Input.WeaponScrollInput == -1)
+        {
+            Inventory.PreviousWeapon();
+        }
     }
 
     // ==================================================

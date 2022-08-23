@@ -4,15 +4,33 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    public float MovementInput { get; private set; }
-    public bool JumpInput { get; private set; }
+    [Header("READ ONLY: Do not edit")]
+    public float MovementInput;
+    public bool JumpInput;
+
+    [Space]
+    public bool WeaponPrimaryAction;
+    public bool WeaponSecondaryAction;
+    public int WeaponScrollInput;
+    // public int WeaponSelectInput; // TODO
+
+    /* TODO
+    Attack
+    secondary attack
+    switch weapons
+    */
 
     // ==================================================
 
     private void Update()
     {
         // TODO: use input system?
-        
+        GetMovementInput();
+        GetWeaponInput();
+    }
+
+    private void GetMovementInput()
+    {
         MovementInput = 0;
         if (Input.GetKey(KeyCode.A))
         {
@@ -25,4 +43,25 @@ public class PlayerInput : MonoBehaviour
         
         JumpInput = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space);
     }
+
+    private void GetWeaponInput()
+    {
+        Vector2 delta = Input.mouseScrollDelta;
+        if (delta.y > 0)
+        {
+            WeaponScrollInput = 1;
+        }
+        else if (delta.y < 0)
+        {
+            WeaponScrollInput = -1;
+        }
+        else
+        {
+            WeaponScrollInput = 0;
+        }
+
+        WeaponPrimaryAction = Input.GetMouseButtonDown(0);
+        WeaponSecondaryAction = Input.GetMouseButtonDown(1);
+    }
+
 }
