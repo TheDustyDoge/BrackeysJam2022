@@ -2,14 +2,15 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
-Brackeys 2022/Library/
-Brackeys 2022/Temp/
-Brackeys 2022/Obj/
-Brackeys 2022/Build/
-Brackeys 2022/Builds/
-Brackeys 2022/Logs/
-Brackeys 2022/MemoryCaptures/
-Brackeys 2022/UserSettings/
+
+Brackeys 2022/Library/**
+Brackeys 2022/Temp/**
+Brackeys 2022/Obj/**
+Brackeys 2022/Build/**
+Brackeys 2022/Builds/**
+Brackeys 2022/Logs/**
+Brackeys 2022/MemoryCaptures/**
+Brackeys 2022/UserSettings/**
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
