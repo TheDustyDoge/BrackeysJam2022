@@ -357,7 +357,14 @@
 -r:"Library/Bee/artifacts/200b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/Characters/PlayerController.cs"
 "Assets/Scripts/Characters/PlayerInput.cs"
+<<<<<<< Updated upstream
 "Assets/Scripts/Managers/CameraManager.cs"
+=======
+"Assets/Scripts/Characters/PlayerInventory.cs"
+"Assets/Scripts/Items/Weapon.cs"
+"Assets/Scripts/Managers/CameraManager.cs"
+"Assets/Scripts/Managers/UIManager.cs"
+>>>>>>> Stashed changes
 -langversion:9.0
 
 /deterministic
